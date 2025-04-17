@@ -1,19 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import Navbar from '@/sections/Navbar';
-import Hero from '@/sections/Hero';
-import AboutUs from '@/sections/AboutUs';
-import Services from '@/sections/Services';
-import Experience from '@/sections/Experience';
-import Pricing from '@/sections/Pricing';
-import Quote from '@/sections/Quote';
-import Contact from '@/sections/Contact';
 import Footer from '@/sections/Footer';
-export default function App() {
+
+export default function ClientWrapper({ children }: { children: ReactNode }) {
   const [isDark, setIsDark] = useState(false);
 
-  // on mount, load preference (or OS default)
   useEffect(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') {
@@ -37,20 +30,10 @@ export default function App() {
   };
 
   return (
-    <div className="font-sans min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <>
       <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
-
-      <main>
-        <Hero />
-        <AboutUs />
-        <Services />
-        <Experience />
-        <Pricing />
-        <Quote />
-        <Contact />
-      </main>
-
-      {/* <Footer /> */}
-    </div>
+      {children}
+      <Footer />
+    </>
   );
 }
