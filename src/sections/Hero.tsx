@@ -137,7 +137,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <motion.p
-          className="text-lg md:text-xl text-gray-600 mb-8 dark:text-gray-300"
+          className="text-lg font-azonix md:text-xl text-gray-600 mb-8 dark:text-gray-300"
           variants={fadeIn}
         >
          Your one-stop partner for custom web design, data-driven insights, and agile digital transformation that drives real results. 

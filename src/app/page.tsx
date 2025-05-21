@@ -10,6 +10,7 @@ import Pricing from '@/sections/Pricing';
 import Quote from '@/sections/Quote';
 import Contact from '@/sections/Contact';
 import Footer from '@/sections/Footer';
+import Landing from '@/sections/Landing';
 export default function App() {
   const [isDark, setIsDark] = useState(false);
 
@@ -39,8 +40,8 @@ export default function App() {
   return (
     <div className="font-sans min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
-
       <main>
+        <Landing />
         <Hero />
         <AboutUs />
         <Services />

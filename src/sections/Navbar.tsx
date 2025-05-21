@@ -1,16 +1,35 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Menu, Sun, Moon, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   isDark: boolean;
   onToggleTheme: () => void;
 }
-
+function CustomHamburger({ open }: { open: boolean }) {
+  return (
+    <div className="flex flex-col justify-center items-end w-8 h-8 relative">
+      {/* Top bar */}
+      <span
+        className={`
+          block h-1 w-7 rounded-full bg-current mb-1 transition-all duration-300
+          ${open ? "translate-y" : ""}
+        `}
+      />
+      {/* Bottom bar */}
+      <span
+        className={`
+          block h-1 w-7 rounded-full bg-current transition-all duration-300
+          ${open ? "-translate-y-2" : ""}
+        `}
+      />
+    </div>
+  );
+}
 export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const navItems = [
     { label: 'About', id: 'about' },
@@ -22,151 +41,66 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
-
-  const mobileNavVars = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
-  };
-  const mobileItemVars = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
+    setIsMenuOpen(false);
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.2 }}
-        className="
-          w-full max-w-4xl flex items-center justify-between
-          px-6 py-3 rounded-full
-          bg-white/75 dark:bg-black/40
-          border border-gray-200 dark:border-gray-700
-          backdrop-blur-lg
-          shadow-none
-          text-indigo-800 dark:text-indigo-100
-        "
-      >
-        {/* Logo */}
-        <motion.div
-          className="text-xl font-bold text-indigo-600 dark:text-indigo-400 cursor-pointer flex-shrink-0"
-          whileHover={{ scale: 1.05 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-end px-4 pt-4 w-screen">
+      <div className="flex items-center space-x-2 relative">
+        {/* Theme Toggle */}
+        <button
+          onClick={onToggleTheme}
+          aria-label="Toggle theme"
+          className="p-1 rounded focus:outline-none"
         >
-          SYNAPSE
-        </motion.div>
+          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+        {/* Hamburger & Dropdown (relative container) */}
+        <motion.button
+          onClick={() => setIsMenuOpen((o) => !o)}
+          whileTap={{ scale: 0.9 }}
+          className="p-1 rounded focus:outline-none"
+          aria-label="Open menu"
+        >
+          <CustomHamburger open={isMenuOpen} />
+        </motion.button>
 
-        {/* Desktop Links + Theme Toggle + CTA */}
-        <div className="hidden md:flex items-center space-x-6">
-          <button
-            onClick={onToggleTheme}
-            aria-label="Toggle theme"
-            className="p-1 rounded focus:outline-none"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-
-          {navItems.map((it) => (
-            <motion.span
-              key={it.id}
-              onClick={() => scrollTo(it.id)}
-              className="cursor-pointer font-medium transition-colors hover:text-indigo-600"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+        {/* Dropdown positioned directly below the hamburger */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="
+                absolute top-12 right-0 mt-2 min-w-[160px]
+                flex flex-col items-end space-y-2
+                bg-transparent shadow-none
+                z-50
+                font-azonix
+                text-lg font-medium
+              "
             >
-              {it.label}
-            </motion.span>
-          ))}
-
-          {/* Book a Demo button with arrow */}
-          <a
-            href="#demo"
-            className="
-              ml-4 inline-flex items-center
-              bg-indigo-600 hover:bg-indigo-700
-              text-white
-              px-4 py-2
-              rounded-full
-              font-medium
-              transition-colors
-              duration-200
-            "
-          >
-            Book a Demo
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-2">
-          <button
-            onClick={onToggleTheme}
-            aria-label="Toggle theme"
-            className="p-1 rounded focus:outline-none"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-
-          <motion.button
-            onClick={() => setIsMobileMenuOpen((o) => !o)}
-            whileTap={{ scale: 0.9 }}
-            className="p-1 rounded focus:outline-none"
-          >
-            <Menu size={24} />
-          </motion.button>
-        </div>
-
-        {/* Mobile Dropdown */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={mobileNavVars}
-            className="
-              absolute top-full left-0 right-0 mt-2
-              bg-white/10 dark:bg-black/10
-              backdrop-blur-md rounded-xl
-              shadow-none p-4
-              text-gray-800 dark:text-gray-100
-            "
-          >
-            <ul className="flex flex-col space-y-3">
               {navItems.map((it) => (
-                <motion.li
+                <span
                   key={it.id}
                   onClick={() => scrollTo(it.id)}
-                  variants={mobileItemVars}
-                  className="cursor-pointer font-medium transition-colors hover:text-indigo-600"
+                  className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
                 >
                   {it.label}
-                </motion.li>
+                </span>
               ))}
-              {/* Include the demo CTA in mobile menu with arrow */}
-              <li>
-                <a
-                  href="#demo"
-                  className="
-                    block text-center inline-flex items-center justify-center
-                    bg-indigo-600 hover:bg-indigo-700
-                    text-white
-                    px-4 py-2
-                    rounded-full
-                    font-medium
-                    transition-colors
-                  "
-                >
-                  Book a Demo
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </motion.nav>
+              <a
+                href="#demo"
+                className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Book a Demo
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

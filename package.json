@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^8.18.0",
     "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.96",
     "framer-motion": "^11.2.14",
     "lucide-react": "^0.488.0",
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "three": "^0.176.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Azonix';
+   src: url('/fonts/Azonix.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer components {
   .btn {
     @apply px-4 py-2 rounded-lg font-medium inline-flex items-center justify-center tracking-tight;
@@ -38,4 +46,8 @@
   .card {
     @apply p-10 rounded-3xl border border-[#F1F1F1] shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full;
   }
+}
+
+body {
+  font-family: 'Azonix', sans-serif;
 }
