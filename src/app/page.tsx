@@ -39,7 +39,6 @@ export default function App() {
 
   return (
     <div className="font-sans min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      <Navbar isDark={isDark} onToggleTheme={toggleTheme} />
       <main>
         <Landing />
         <Hero />
