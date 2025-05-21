@@ -97,7 +97,7 @@ export default function Services() {
             <img
               src={webDesign.src}
               alt={services[0].title}
-              className="w-full h-full object-cover"
+              className="w-full object-scale-down"
             />
     <div className="absolute bottom-0 left-0 h-1/2w-full bg-white bg-opacity-75 p-4 text-center">
               <h1 className="font-semibold text-2xl text-indigo-600 dark:text-gray-900">
@@ -118,7 +118,7 @@ export default function Services() {
             <img
               src={digitalTransformation.src}
               alt={services[1].title}
-              className="w-full h-full object-cover"
+              className="w-full object-scale-down"
             />
              <div className="absolute bottom-0 left-0 h-1/2w-full bg-white bg-opacity-75 p-4 text-center">
               <h1 className="font-semibold text-2xl text-indigo-600 dark:text-gray-900">
@@ -128,6 +128,7 @@ export default function Services() {
                 {services[1].description}
               </p>
             </div>
+            
           </motion.div>
 
           {/* Tall Rectangle (row1-2,col3) */}
@@ -139,7 +140,7 @@ export default function Services() {
             <img
               src={ai.src}
               alt={services[2].title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-scale-down"
             />
              <div className="absolute bottom-0 left-0 h-1/2w-full bg-white bg-opacity-75 p-4 text-center">
               <h1 className="font-semibold text-2xl text-indigo-600 dark:text-gray-900">
@@ -160,7 +161,7 @@ export default function Services() {
             <img
               src={digitalMarketing.src}
               alt={services[3].title}
-              className="w-full h-full object-cover max-h-96"
+              className="w-full h-full object-scale-down max-h-96"
             />
             <div className="absolute w-full bottom-0 left-0 h-1/2w-full bg-white bg-opacity-75 p-4 text-center">
               <h1 className="font-semibold text-2xl text-indigo-600 dark:text-gray-900">
@@ -181,7 +182,7 @@ export default function Services() {
             <img
               src={it.src}
               alt={services[4].title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-scale-down"
             />
             <div className="absolute bottom-0 left-0 h-1/2w-full bg-white bg-opacity-75 p-4 text-center">
               <h1 className="font-semibold text-2xl text-indigo-600 dark:text-gray-900">
