@@ -47,7 +47,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-end px-4 pt-4 w-screen">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-end px-4 pt-4">
       <div className="flex items-center space-x-2 relative">
         {/* Theme Toggle */}
        <button

@@ -12,7 +12,7 @@ export default function Landing({isDark}: {isDark: boolean}) {
     initial={{ opacity: 0, translateY: -20 }}
     animate={{ opacity: 1, translateY: 0 }}
     transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-    className="absolute top-0 left-0 -translate-x-1/2 flex justify-center items-start w-screen">
+    className="absolute top-0 left-0 -translate-x-1/2 flex justify-center items-start w-full">
        <svg       xmlns="http://www.w3.org/2000/svg"
       width="400"
       height="400"
