@@ -10,21 +10,15 @@ interface NavbarProps {
 }
 function CustomHamburger({ open }: { open: boolean }) {
   return (
-    <div className="flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer">
+    <div className="relative flex items-center justify-center w-8 h-8 cursor-pointer">
       <motion.span
-        className="block h-1 w-7 rounded-full bg-current absolute"
-        animate={open
-          ? { translateY: 0,  width: '100%' }
-          : { translateY: 5, width: '60%' }
-        }
+        className="block absolute h-0.5 w-6 bg-current rounded"
+        animate={open ? { rotate: 45 } : { rotate: 0, translateY: -4 }}
         transition={{ duration: 0.3 }}
       />
-       <motion.span
-        className="block h-1 w-7 rounded-full bg-current absolute"
-        animate={open
-          ? { translateY: 0 }
-          : { translateY: -5 }
-        }
+      <motion.span
+        className="block absolute h-0.5 w-6 bg-current rounded"
+        animate={open ? { rotate: -45 } : { rotate: 0, translateY: 4 }}
         transition={{ duration: 0.3 }}
       />
     </div>
@@ -92,35 +86,28 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           <CustomHamburger open={isMenuOpen} />
         </motion.button>
 
-        {/* Dropdown positioned directly below the hamburger */}
+        {/* Mobile menu overlay */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="
-                absolute top-12 right-0 mt-2 min-w-[160px]
-                flex flex-col items-end space-y-2
-                bg-transparent shadow-none
-                z-50
-                font-azonix
-                text-lg font-medium
-              "
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-white/90 dark:bg-gray-900/90 flex flex-col items-center justify-center space-y-6 font-azonix text-lg font-medium md:hidden"
             >
               {navItems.map((it) => (
                 <span
                   key={it.id}
                   onClick={() => scrollTo(it.id)}
-                  className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
+                  className="cursor-pointer transition-colors hover:text-indigo-600"
                 >
                   {it.label}
                 </span>
               ))}
               <a
                 href="#demo"
-                className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
-                onClick={() => setIsMenuOpen(false)}
+                className="cursor-pointer transition-colors hover:text-indigo-600"
               >
                 Book a Demo
               </a>
