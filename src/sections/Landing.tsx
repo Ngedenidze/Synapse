@@ -4,7 +4,7 @@ import BackgroundSpheres from '@/components/animation/BackgroundSpheres';
 
 export default function Landing({isDark}: {isDark: boolean}) {
   return (
-    <section className="relative min-h-screen  bg-gradient-to-br from-indigo-400 via-teal-200 to-purple-200
+    <section className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-indigo-400 via-teal-200 to-purple-200
         dark:bg-gradient-to-br dark:from-indigo-900 dark:via-gray-900 dark:to-purple-900 flex flex-col">
           <BackgroundSpheres isDark={isDark} />
       {/* Top-centered logo */}
@@ -12,7 +12,7 @@ export default function Landing({isDark}: {isDark: boolean}) {
     initial={{ opacity: 0, translateY: -20 }}
     animate={{ opacity: 1, translateY: 0 }}
     transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-    className="absolute top-0 left-0 -translate-x-1/2 flex justify-center items-start w-full">
+     className="absolute inset-x-0 top-0 flex justify-center items-start">
        <svg       xmlns="http://www.w3.org/2000/svg"
       width="400"
       height="400"

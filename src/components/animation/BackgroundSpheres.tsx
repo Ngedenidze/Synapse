@@ -28,14 +28,16 @@ const colorB = isDark ? new THREE.Color("#fff3ea") : new THREE.Color("#5eead4");
   // Cluster centers
   const center1: [number, number, number] = [-10, 8, -2];
   const center2: [number, number, number] = [10, -5, 5];
-return (
+  return (
     <Canvas
       style={{
         position: "fixed",
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100vh",
+        right: 0,       // <-- add right and bottom instead of 100vw/100vh
+        bottom: 0,
+        width: "100%",  // <-- use 100% instead of 100vw
+        height: "100%", // <-- use 100% instead of 100vh
         zIndex: 0,
         pointerEvents: "none",
       }}
