@@ -46,7 +46,6 @@ export default function App() {
         <Services />
         <Experience />
         <Pricing />
-        <Quote />
         <Contact />
       </main>
 

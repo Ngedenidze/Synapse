@@ -56,8 +56,8 @@ export default function Services() {
                  bg-gradient-to-b from-black via-gray-900 to-black
                  text-white"
     >
-      <h2 className="absolute top-8 bg-slate-200/15 p-2 font-azonix right-8 text-5xl md:text-2xl uppercase tracking-widest">
-        Our <span className="text-pink-500">Services</span>
+      <h2 className="absolute top-8 bg-slate-200/15 p-2 font-azonix right-8 text-5xl md:text-5xl uppercase tracking-widest">
+        Our <span className="text-purple-600 dark:text-purple-400">Services</span>
       </h2>
 
       {/* overlapping cards */}
@@ -81,7 +81,7 @@ export default function Services() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
         >
-          <span className="font-azonix text-sm text-pink-500 mb-2 block">
+          <span className="font-azonix text-sm text-purple-600 dark:text-purple-400 mb-2 block">
             {String(i + 1).padStart(2, '0')}
           </span>
           <h3 className="text-4xl font-bold font-azonix mb-4">{svc.title}</h3>

@@ -78,7 +78,7 @@ export default function StripReveal() {
 
       {/* Text overlay */}
       <div className="absolute font-azonix bottom-16 left-8 text-white font-bold text-5xl sm:text-7xl leading-tight bg-black bg-opacity-80 px-4 py-2 select-none pointer-events-none">
-        REIMAGINE<br />POSSIBILITIES
+        REIMAGINE<br /> <span className="text-purple-600 dark:text-purple-400">POSSIBILITIES</span>
       </div>
     </section>
   );
