@@ -42,7 +42,7 @@ const fadeIn = {
 // positions for the 5 cards (percentages)
 const positions = [
   { top: '5%',  left: '15%' },
-  { top: '20%', left: '47%' },
+  { top: '10%', left: '47%' },
   { top: '35%', left: '15%' },
   { top: '50%', left: '47%' },
   { top: '65%', left: '15%' },
@@ -56,23 +56,35 @@ export default function Services() {
                  bg-gradient-to-b from-black via-gray-900 to-black
                  text-white"
     >
-      <h2 className="absolute top-8 bg-slate-200/15 p-2 font-azonix right-8 text-5xl md:text-5xl uppercase tracking-widest">
+      <h2 className="absolute top-8 right-8 bg-slate-200/15 p-2 font-azonix 
+                     text-5xl sm:text-2xl uppercase tracking-widest">
         Our <span className="text-purple-600 dark:text-purple-400">Services</span>
       </h2>
 
-      {/* overlapping cards */}
       {services.map((svc, i) => (
         <motion.div
           key={i}
           className={`
-            absolute bg-gray-800 bg-opacity-90
-            p-8 rounded-2xl shadow-2xl
-            text-white
+            /* position */
+            static lg:absolute
+
+            /* container look */
+            bg-gray-800 bg-opacity-90 p-8 rounded-2xl shadow-2xl text-white
+
+            /* stacking on mobile */
+            w-[80%] mx-auto mb-8
+
+            /* tablet */
+            md:w-[50%] md:min-h-[400px]
+
+            /* desktop overlapping */
+            lg:w-[35%] lg:min-h-[500px]
+            lg:mx-0 lg:mb-0
+
+            /* z-index so items overlap in order */
+            z-[${i + 10}]
           `}
           style={{
-            width: '35%',
-            minHeight: '500px',
-            zIndex: i + 10,
             top: positions[i].top,
             left: positions[i].left,
           }}
@@ -81,11 +93,15 @@ export default function Services() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
         >
-          <span className="font-azonix text-sm text-purple-600 dark:text-purple-400 mb-2 block">
+          <span className="block mb-2 font-azonix text-sm text-purple-600 dark:text-purple-400">
             {String(i + 1).padStart(2, '0')}
           </span>
-          <h3 className="text-4xl font-bold font-azonix mb-4">{svc.title}</h3>
-          <p className="text-gray-300 text-2xl">{svc.description}</p>
+          <h3 className="mb-4 text-4xl font-bold font-azonix sm:text-2xl">
+            {svc.title}
+          </h3>
+          <p className="text-2xl text-gray-300 sm:text-lg">
+            {svc.description}
+          </p>
         </motion.div>
       ))}
     </section>

@@ -51,4 +51,6 @@
 body {
   font-family: 'Azonix', sans-serif;
   overflow-x: hidden;
+  width: 100vw;
+  overflow-x: hidden;
 }

@@ -13,7 +13,7 @@ export const LogoTicker = () => {
     <div className="py-8 md:py-12 bg-white">
       <div className="container">
         <div
-          className="flex overflow-hidden"
+          className="flex overflow-visible"
           style={{ maskImage: "linear-gradient(to right, transparent, black, transparent)" }}
         >
           <motion.div

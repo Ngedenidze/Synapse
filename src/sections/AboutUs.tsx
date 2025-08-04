@@ -41,11 +41,11 @@ export default function StripReveal() {
       ref={ref}
       className="relative h-screen overflow-hidden bg-black" // bg-black as a fallback
     >
-      {/* Container for strips */}
+      {/* Container for strips */} 
       {strips.map(({ height, topOffset }, i) => (
         <motion.div
           key={i}
-          className="absolute left-0 w-full overflow-hidden" // overflow-hidden is crucial for the reveal
+          className="absolute left-0 w-full overflow-visible" 
           style={{
             top: topOffset,
             // The height of this motion.div is animated by variants from "0%" to strips[i].height
@@ -77,7 +77,7 @@ export default function StripReveal() {
       ))}
 
       {/* Text overlay */}
-      <div className="absolute font-azonix bottom-16 left-8 text-white font-bold text-5xl sm:text-7xl leading-tight bg-black bg-opacity-80 px-4 py-2 select-none pointer-events-none">
+      <div className="absolute max-w-screen font-azonix bottom-16 left-8 text-white font-bold text-5xl sm:text-2xl leading-tight bg-black bg-opacity-80 px-4 py-2 select-none pointer-events-none">
         REIMAGINE<br /> <span className="text-purple-600 dark:text-purple-400">POSSIBILITIES</span>
       </div>
     </section>

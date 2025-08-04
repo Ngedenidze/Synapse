@@ -17,12 +17,12 @@ export default function Footer() {
         relative py-16 flex flex-col items-center text-center
          bg-gradient-to-br from-indigo-400 via-teal-200 to-purple-200
         dark:bg-gradient-to-br dark:from-indigo-900 dark:via-gray-900 dark:to-purple-900
-        overflow-hidden
+        overflow-visible
       "
     >
       {/* Floating blobs (same as Hero) */}
-      <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-300 rounded-full blur-xl opacity-30 animate-blob dark:bg-indigo-700" />
-      <div className="absolute bottom-10 -right-10 w-40 h-40 bg-purple-300 rounded-full blur-xl opacity-30 animate-blob animation-delay-2000 dark:bg-purple-700" />
+      {/* <div className="absolute -top-10 -left-10 w-32 h-32 bg-indigo-300 rounded-full blur-xl opacity-30 animate-blob dark:bg-indigo-700" />
+      <div className="absolute bottom-10 -right-10 w-40 h-40 bg-purple-300 rounded-full blur-xl opacity-30 animate-blob animation-delay-2000 dark:bg-purple-700" /> */}
 
       <div className="z-10 container mx-auto px-6 space-y-6">
         {/* Logo */}
@@ -67,28 +67,7 @@ export default function Footer() {
       </div>
 
       {/* Blob keyframes (if not already global) */}
-      <style jsx>{`
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        @keyframes blob {
-          0% {
-            transform: translate(0, 0) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0, 0) scale(1);
-          }
-        }
-      `}</style>
+      
     </footer>
   );
 }

@@ -77,10 +77,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-teal-50 px-6 py-32 dark:from-black dark:via-gray-900 dark:to-black md:py-24"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-visible bg-gradient-to-br from-indigo-50 via-white to-teal-50 px-6 py-32 dark:from-black dark:via-gray-900 dark:to-black md:py-24"
     >
       {/* Decorative blobs */}
-      <motion.div
+      {/* <motion.div
         aria-hidden
         style={{ y: blob1Y }}
         className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-purple-300/40 blur-3xl dark:bg-purple-700/30"
@@ -89,11 +89,11 @@ export default function Contact() {
         aria-hidden
         style={{ y: blob2Y }}
         className="absolute -bottom-32 right-0 h-[28rem] w-[28rem] rounded-full bg-indigo-200/50 blur-3xl dark:bg-indigo-900/30"
-      />
+      /> */}
 
       {/* Heading */}
       <motion.h2
-        className="mb-16 text-center font-azonix text-4xl font-bold leading-tight text-gray-800 dark:text-gray-100 md:text-5xl"
+        className="mb-16 text-center font-azonix text-4xl sm:text-xl font-bold leading-tight text-gray-800 dark:text-gray-100 md:text-5xl"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
@@ -107,17 +107,17 @@ export default function Contact() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 grid w-full max-w-6xl grid-cols-1 gap-16 md:grid-cols-2"
+        className="relative z-10 grid w-full max-w- sm:max-w-xl grid-cols-1 gap-16 md:grid-cols-2 md:max-w-5xl"
       >
         {/* Contact Details */}
         <motion.div
           variants={staggerItem}
-          className="flex font-azonix flex-col gap-12 rounded-3xl bg-white/70 p-10 shadow-2xl backdrop-blur-md dark:bg-white/10 dark:shadow-none"
+          className="flex w-[100%] font-azonix flex-col gap-12 rounded-3xl bg-white/70 p-10 shadow-2xl backdrop-blur-md dark:bg-white/10 dark:shadow-none"
         >
           {[{
             icon: MapPin,
             label: 'Address',
-            content: ['123 Anywhere St.', 'Caldwell, NJ, USA'],
+            content: ['23 Westville Ave', 'Caldwell, NJ, USA'],
           },
           {
             icon: Phone,

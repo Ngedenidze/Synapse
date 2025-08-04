@@ -12,7 +12,7 @@ function CustomHamburger({ open }: { open: boolean }) {
   return (
     <div className="flex flex-col justify-center items-center w-8 h-8 relative cursor-pointer">
       <motion.span
-        className="block h-1 w-7 rounded-full bg-current absolute"
+        className="block h-1 w-7 rounded-full bg-current absolute bg-[#FFBC45] "
         animate={open
           ? { translateY: 0,  width: '100%' }
           : { translateY: 5, width: '60%' }
@@ -20,7 +20,7 @@ function CustomHamburger({ open }: { open: boolean }) {
         transition={{ duration: 0.3 }}
       />
        <motion.span
-        className="block h-1 w-7 rounded-full bg-current absolute"
+        className="block h-1 w-7 rounded-full bg-current absolute bg-[#FFBC45]"
         animate={open
           ? { translateY: 0 }
           : { translateY: -5 }
@@ -47,7 +47,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-end px-4 pt-4 sm:w-screen md:w-screen" style={{ backdropFilter: 'blur(10px)' }}>
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-end px-4 pt-4 sm:w-screen md:w-screen">
       <div className="flex items-center space-x-2 relative">
         {/* Theme Toggle */}
        <button
@@ -66,7 +66,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
         transition={{ duration: 0.2 }}
         style={{ display: 'inline-flex', position: 'absolute' }}
       >
-        <Sun size={20} />
+        <Sun size={20} fill='white' stroke='white' />
       </motion.span>
     ) : (
       <motion.span
@@ -95,31 +95,41 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
         {/* Dropdown positioned directly below the hamburger */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="
-                absolute top-12 right-0 mt-2 min-w-[160px]
-                flex flex-col items-end space-y-2
-                bg-transparent shadow-none
-                z-50
-                font-azonix
-                text-lg font-medium
-              "
-            >
+          <motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -10 }}
+  className="
+    absolute top-12 right-0 mt-2 min-w-[160px]
+    flex flex-col items-end space-y-2
+    bg-transparent shadow-none
+    sm:bg-[#8ab6f0]
+    z-50
+    font-azonix
+    text-lg font-medium
+
+    /* iOS glass effect for small screens */
+    sm:backdrop-blur-md
+    sm:bg-white/15
+    sm:border
+    sm:border-white/20
+    sm:shadow-lg
+    sm:rounded-md
+    
+  "
+>
               {navItems.map((it) => (
-                <span
+                <div
                   key={it.id}
                   onClick={() => scrollTo(it.id)}
-                  className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
+                  className="cursor-pointer transition-colors text-[black] hover:text-indigo-600 px-4 py-1 whitespace-nowrap  dark:text-white sm:border-b-[0.5px] sm:border-b-gray-500/90 sm:w-[98%] sm:text-right"
                 >
                   {it.label}
-                </span>
+                </div>
               ))}
               <a
                 href="#demo"
-                className="cursor-pointer transition-colors hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
+                className="cursor-pointer transition-colors text-[black] dark:text-white hover:text-indigo-600 px-4 py-1 whitespace-nowrap"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book a Demo
